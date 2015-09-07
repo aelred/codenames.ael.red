@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var colorsHidden = true;
+
     var randomPop = function (array) {
         var index = Math.floor(Math.random() * array.length);
         return array.splice(index, 1)[0];
@@ -20,5 +22,14 @@ $(document).ready(function() {
                 $(this).append(randomPop(words));
             });
         });
+    });
+
+    $('#toggle').click(function() {
+        if (colorsHidden) {
+            $('link[href="colors_hide.css"]').attr('href', 'colors_show.css');
+        } else {
+            $('link[href="colors_show.css"]').attr('href', 'colors_hide.css');
+        }
+        colorsHidden = !colorsHidden;
     });
 })
