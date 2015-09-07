@@ -1,27 +1,51 @@
 $(document).ready(function() {
     var colorsHidden = true;
 
+    var maxSeed = 999999;
+    var initialSeed;
+    var seed;
+
+    function setSeed(newSeed) {
+        initialSeed = newSeed;
+        seed = initialSeed;
+        $('#seed').val(newSeed);
+    }
+
+    // Custom random function with seed
+    function random() {
+        var x = Math.sin(seed++) * 10000;
+        return x - Math.floor(x);
+    }
+
     var randomPop = function (array) {
-        var index = Math.floor(Math.random() * array.length);
+        var index = Math.floor(random() * array.length);
         return array.splice(index, 1)[0];
     }
 
-    $.get('words.txt', function(data) {
-        words = data.split("\n");
-        colors = [
-            'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
-            'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
-            'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'neutral',
-            'neutral', 'assassin'
-        ];
+    function populateGrid() {
+        $.get('words.txt', function(data) {
+            words = data.split("\n");
+            colors = [
+                'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
+                'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
+                'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'neutral',
+                'neutral', 'assassin'
+            ];
 
-        // Iterate over and populate table cells
-        $("#grid tr").each(function() {
-            $('td', this).each(function() {
-                $(this).addClass(randomPop(colors));
-                $(this).append(randomPop(words));
+            // Iterate over and populate table cells
+            $("#grid tr").each(function() {
+                $('td', this).each(function() {
+                    $(this).removeClass('red blue neutral assassin');
+                    $(this).addClass(randomPop(colors));
+                    $(this).html(randomPop(words));
+                });
             });
         });
+    }
+
+    $('#seed').click(function() {
+        setSeed($('#seed').val());
+        populateGrid();
     });
 
     $('#toggle').click(function() {
@@ -32,4 +56,7 @@ $(document).ready(function() {
         }
         colorsHidden = !colorsHidden;
     });
+
+    setSeed(Math.round(1 + maxSeed * Math.random()));
+    populateGrid();
 })
