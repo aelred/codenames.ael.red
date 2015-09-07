@@ -1,13 +1,27 @@
 <html>
 <head>
-<link href="colors_hide.css" rel="stylesheet" type="text/css">
+
+<!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
 </script>
+
+<!-- Bootstrap -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<link href="colors_hide.css" rel="stylesheet" type="text/css">
 <script src="codenames.js"></script>
 </head>
 
-<body>
-    <table id="grid">
+<body class="container jumbotron">
+    <table id="grid" class="table table-bordered text-center">
         <tr><td><td><td><td><td></tr>
         <tr><td><td><td><td><td></tr>
         <tr><td><td><td><td><td></tr>
@@ -15,7 +29,9 @@
         <tr><td><td><td><td><td></tr>
     </table>
 
-    <button id="toggle">Hide/Show</button>
+    <div class="text-center">
+        <button class="btn btn-primary" id="toggle">Hide/Show</button>
+    </div>
 </body>
 </html>
 
