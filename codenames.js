@@ -1,3 +1,5 @@
+var handleBoardID;
+
 $(document).ready(function() {
     var colorsHidden = true;
 
@@ -43,10 +45,10 @@ $(document).ready(function() {
         });
     }
 
-    $('#seed').click(function() {
+    handleBoardID = function(e) {
         setSeed($('#seed').val());
         populateGrid();
-    });
+    }
 
     $('#toggle').click(function() {
         if (colorsHidden) {
