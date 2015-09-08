@@ -42,7 +42,7 @@ $(document).ready(function() {
             ];
 
             // Iterate over and populate table cells
-            $('#grid a').each(function(i, a) {
+            $('#grid .word').each(function(i, a) {
                 $(a).html(randomPop(words));
                 $(a).data('color', randomPop(colors));
             });
@@ -50,13 +50,13 @@ $(document).ready(function() {
     }
 
     function clearColors() {
-        $('#grid a').each(function(i, a) {
+        $('#grid .word').each(function(i, a) {
             $(a).removeClass('btn-danger btn-primary btn-warning');
         });
     }
 
     function showColors() {
-        $('#grid a').each(function(i, a) {
+        $('#grid .word').each(function(i, a) {
             $(a).addClass(colorClasses[$(a).data('color')]);
         });
     }
