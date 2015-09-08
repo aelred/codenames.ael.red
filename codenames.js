@@ -1,5 +1,3 @@
-var handleBoardID;
-
 $(document).ready(function() {
     var colorsHidden = true;
 
@@ -73,10 +71,11 @@ $(document).ready(function() {
         $(word).addClass(colorClasses[$(word).data('color')]);
     }
 
-    handleBoardID = function(e) {
+    $('#board-id-form').submit(function() {
         setSeed($('#seed').val());
         populateGrid();
-    }
+        return false;
+    });
 
     $('.word').click(function() {
         showColor(this);
