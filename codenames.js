@@ -3,6 +3,13 @@ var handleBoardID;
 $(document).ready(function() {
     var colorsHidden = true;
 
+    colorClasses = {
+        'red': 'btn-danger',
+        'blue': 'btn-primary',
+        'neutral': 'btn-default',
+        'assassin': 'btn-warning'
+    }
+
     var maxSeed = 999999;
     var initialSeed;
     var seed;
@@ -35,13 +42,22 @@ $(document).ready(function() {
             ];
 
             // Iterate over and populate table cells
-            $("#grid tr").each(function() {
-                $('td', this).each(function() {
-                    $(this).removeClass('red blue neutral assassin');
-                    $(this).addClass(randomPop(colors));
-                    $(this).html(randomPop(words));
-                });
+            $('#grid a').each(function(i, a) {
+                $(a).html(randomPop(words));
+                $(a).data('color', randomPop(colors));
             });
+        });
+    }
+
+    function clearColors() {
+        $('#grid a').each(function(i, a) {
+            $(a).removeClass('btn-danger btn-primary btn-warning');
+        });
+    }
+
+    function showColors() {
+        $('#grid a').each(function(i, a) {
+            $(a).addClass(colorClasses[$(a).data('color')]);
         });
     }
 
@@ -52,9 +68,9 @@ $(document).ready(function() {
 
     $('#toggle').click(function() {
         if (colorsHidden) {
-            $('link[href="colors_hide.css"]').attr('href', 'colors_show.css');
+            showColors();
         } else {
-            $('link[href="colors_show.css"]').attr('href', 'colors_hide.css');
+            clearColors();
         }
         colorsHidden = !colorsHidden;
     });
