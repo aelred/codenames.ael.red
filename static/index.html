@@ -24,16 +24,28 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <script src="codenames.js"></script>
+
+<style>
+.margin {
+    margin-bottom: 30px;
+}
+</style>
 </head>
 
-<body class="container">
+<body class="container margin">
     <h1 class="text-center">Codenames</h1>
+
+    <div class="container text-center margin">
+        Web version of the boardgame Codenames.  Please support the
+        original designers by
+        <a href="http://amzn.com/B014Q1XX9S">purchasing</a> a copy!
+    </div>
 
     <button class="btn btn-info btn-block btn-lg" id="toggle">
         Hide/Show
     </button>
 
-    <div id="grid">
+    <div id="grid" class="margin">
         <div class="btn-group btn-group-justified" role="group">
             <a href="#" role="button" class="btn btn-lg btn-default word"></a>
             <a href="#" role="button" class="btn btn-lg btn-default word"></a>
@@ -76,6 +88,142 @@
         <input id="seed" type="number" class="form-control"></input>
         <button type="submit" class="btn btn-default">Change</button>
     </form>
+
+    <div class="container row col-md-8 col-md-offset-2">
+        <h1 class="page-header">Setup</h1>
+        Players split up into two teams of similar size and skill. You
+        need at least four players (two teams of two) for a standard
+        game.
+        <p>
+        Each team chooses one player to be their spymaster. Both
+        spymasters sit on the same side of the table. The other players
+        sit across from their spymasters. They are field operatives.
+        <p>
+        The grid shows 25 codenames in a 5-by-5 grid. Each codenames has a
+        secret identity that the spymasters know. The spymasters can view
+        the identities on a separate device by entering the same board ID
+        in the input box, selecting 'Change' and then 'Hide/Show'. Don't
+        let the field operatives see it.
+        <p>
+        Blue squares correspond to words that Blue Team must guess (blue
+        agents). Red squares correspond to words that Red Team must guess
+        (red agents). Gray squares are innocent bystanders, and the
+        orange square is an assassin who should never be contacted at all!
+
+        <h1 class="page-header">Game Overview</h1>
+        Spymasters know the secret identities of 25 agents. Their teammates
+        know the agents only by their codenames.
+        <p>
+        Spymasters take turns giving one-word clues. A clue may relate to
+        multiple words on the grid. The field operatives try to guess which
+        words their spymaster meant. When a field operative selects a word,
+        it reveals its secret identity. If it is one of their team's agents,
+        the operatives may keep guessing. Otherwise, it is the other team's
+        turn. The first team to contact all their agents wins the game.
+
+        <h1 class="page-header">Game Play</h1>
+        Teams take turns, starting with the red team.
+
+        <h2>Giving a Clue</h2>
+        If you are the spymaster, you are trying to think of a one-word clue
+        that relates to some of the words your team is trying to guess. When
+        you think you have a good clue, you say it. You also say one number,
+        which tells your teammates how many codenames are related to your
+        clue.
+        <p>
+        Example: Two of your words are NUT and BARK. Both of these grow on
+        trees, so you say tree: 2.
+        <p>
+        You are allowed to give a clue for only one word (cashew: 1) but it's
+        fun to try for two or more. Getting four words with one clue is a big
+        accomplishment.
+
+        <h3>One Word</h3>
+        Your clue must be only one word. You are not allowed to give extra
+        hints. For example, don't say, "This may be a bit of a stretch…" You
+        are playing Codenames. It's always a bit of a stretch.
+        <p>
+        Your clue cannot be any of the codenames unselected on the grid. On
+        later turns, some codenames will be selected, so a clue that is not
+        legal now might be legal later.
+
+        <h2>Making Cotact</h2>
+        When the spymaster gives a clue, his or her field operatives try to
+        figure out what it means. They can debate it amongst themselves, but
+        the spymaster must keep a straight face. The operatives indicate their
+        official guess when one of them selects one of the codenames on the
+        grid.
+
+        <ul>
+            <li>
+                If the field operative selects a word belonging to his or her
+                team, the team may guess another word.
+            </li>
+            <li>
+                If the field operative selects an innocent bystander or a word
+                belonging to the other team, they end their turn. If the word
+                belongs to the other team, it helps them win.
+            </li>
+            <li>
+                If the field operative selects the assassin, the game ends and
+                the team that selected the assassin loses!
+            </li>
+        </ul>
+
+        <h3>Number of Guesses</h3>
+        The field operatives must always make at least one guess. Any wrong
+        guess ends the turn immediately, but if the field operatives guess a
+        word of their team's color, they can keep guessing.
+        <p>
+        You can stop guessing at any time, but usually you want to guess as
+        many words as the spymaster said. Sometimes you might even want to
+        guess one more:
+        <p>
+        Example: Red Team's first clue was tree: 2. The red operative wanted
+        to guess ORANGE and NUT. She guessed ORANGE first. That was an
+        innocent bystander, so she did not get a chance to guess NUT.
+        <p>
+        Blue Team took a turn and correctly guessed two words. Now it is Red
+        Team's turn again.
+        <p>
+        The red spymaster says river: 3. The red operative is pretty sure the
+        AMAZON is a river, so she selects that word. The word is red, so she
+        gets to go again. A river has a BED, so she selects that codename.
+        It's also red, so she can go again.
+        <p>
+        She's not sure of the third river word. She picks NUT. This has
+        nothing to do with river. She is guessing a word from the previous
+        clue.
+        <p>
+        NUT is a red word. The operative has made 3 correct guesses for the
+        clue river: 3. She is allowed one final guess. She can try to find the
+        third river word, or she can try to find the other tree word. Or she
+        can stop at three and let Blue Team have a turn.
+        <p>
+        You are allowed only one extra guess. In the example above, the red
+        operative would be allowed 4 guesses because her spymaster said the
+        number 3. When the field operatives say they are done guessing (or
+        when they guess wrong) it is the other team's turn.
+
+        <h2>Game Flow</h2>
+        Spymasters take turns giving clues. Each turn covers up at least one
+        word, which makes guessing progressively easier.
+
+        <h2>Ending the Game</h2>
+        The game ends when one team has all their words covered. That team
+        wins.
+        <p>
+        It is possible to win on the other team's turn if they guess your last
+        word.
+        <p>
+        The game can end early if a field operative makes contact with the
+        assassin. That operative's team loses.
+
+        <h3>Setup for the Next Game</h3>
+        Do other players want a chance to be spymasters? Setup for the second
+        game is easy. Refresh the page or choose a new board ID to get a fresh
+        board, and you're ready to go!
+    </div>
 </body>
 </html>
 
