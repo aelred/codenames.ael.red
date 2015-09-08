@@ -2,7 +2,9 @@ server {
     listen 80;
     server_name {{ inventory_hostname }};
 
+    root /home/{{ ansible_ssh_user }}/sites/{{ inventory_hostname }}/static;
+
     location / {
-        alias /home/{{ ansible_ssh_user }}/sites/{{ inventory_hostname }}/static;
+        autoindex on;
     }
 }
