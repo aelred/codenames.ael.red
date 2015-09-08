@@ -16,7 +16,7 @@
         - restart nginx
     
     - name: make sure nginx is running
-    service: name=nginx state=running
+      service: name=nginx state=running
    
   handlers:
     - name: restart nginx
