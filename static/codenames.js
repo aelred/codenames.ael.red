@@ -32,6 +32,7 @@ $(document).ready(function() {
     function populateGrid() {
         $.get('words.txt', function(data) {
             words = data.split("\n");
+            words.pop(); // Remove final blank word
             colors = [
                 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
                 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
