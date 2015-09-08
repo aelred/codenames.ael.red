@@ -1,5 +1,9 @@
 $(document).ready(function() {
     var colorsHidden = true;
+    var redWords = 9;
+    var blueWords = 8;
+    var redRevealed;
+    var blueRevealed;
 
     colorClasses = {
         'red': 'btn-danger',
@@ -39,6 +43,8 @@ $(document).ready(function() {
                 'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'neutral',
                 'neutral', 'assassin'
             ];
+            redRevealed = 0;
+            blueRevealed = 0;
 
             // Iterate over and populate table cells
             $('#grid .word').each(function(i, a) {
@@ -49,6 +55,7 @@ $(document).ready(function() {
 
             clearColors();
             if (!colorsHidden) showColors();
+            updateScore();
         });
     }
 
@@ -72,6 +79,17 @@ $(document).ready(function() {
         $(word).addClass(colorClasses[$(word).data('color')]);
     }
 
+    function updateScore() {
+        updateScoreText(
+            '' + redRevealed + '/' + redWords,
+            '' + blueRevealed + '/' + blueWords);
+    }
+
+    function updateScoreText(red, blue) {
+        $('#red-text').html(red);
+        $('#blue-text').html(blue);
+    }
+
     $('#board-id-form').submit(function() {
         setSeed($('#seed').val());
         populateGrid();
@@ -80,7 +98,25 @@ $(document).ready(function() {
 
     $('.word').click(function() {
         showColor(this);
-        $(this).addClass('active');
+        var assassin = false;
+
+        if (! $(this).hasClass('active')) {
+            $(this).addClass('active');
+            if ($(this).data('color') === 'red') redRevealed++;
+            if ($(this).data('color') === 'blue') blueRevealed++;
+            if ($(this).data('color') === 'assassin') assassin = true;
+        }
+
+        // Check win condition
+        if (assassin) {
+            updateScoreText('Game Over!', 'Game Over!');
+        } else if (redRevealed === redWords) {
+            updateScoreText('Red Wins!', 'Blue Loses!');
+        } else if (blueRevealed === blueWords) {
+            updateScoreText('Red Loses!', 'Blue Wins!');
+        } else {
+            updateScore();
+        }
     });
 
     $('#toggle').click(function() {

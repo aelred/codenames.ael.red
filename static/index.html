@@ -29,6 +29,16 @@
 .margin {
     margin-bottom: 30px;
 }
+
+#blue-score {
+    color: white;
+    background-image: linear-gradient(to left, rgba(51, 122, 183, 0), rgba(38, 90, 136, 1));
+}
+
+#red-score {
+    color: white;
+    background-image: linear-gradient(to right, rgba(217, 83, 79, 0), rgba(193, 46, 42, 1) 75%);
+}
 </style>
 </head>
 
@@ -45,7 +55,16 @@
         Hide/Show
     </button>
 
-    <div id="grid" class="margin">
+    <div class="row container">
+        <div id="blue-score" class="col-md-6">
+            <h2 id="blue-text"></h2>
+        </div>
+        <div id="red-score" class="col-md-6 text-right">
+            <h2 id="red-text"></h2>
+        </div>
+    </div>
+
+    <div id="grid">
         <div class="btn-group btn-group-justified" role="group">
             <a role="button" class="btn btn-lg btn-default word"></a>
             <a role="button" class="btn btn-lg btn-default word"></a>
