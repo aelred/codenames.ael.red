@@ -43,22 +43,34 @@ $(document).ready(function() {
 
             // Iterate over and populate table cells
             $('#grid .word').each(function(i, a) {
+                $(a).removeClass('active');
                 $(a).html(randomPop(words));
                 $(a).data('color', randomPop(colors));
             });
+
+            clearColors();
+            if (!colorsHidden) showColors();
         });
     }
 
     function clearColors() {
         $('#grid .word').each(function(i, a) {
-            $(a).removeClass('btn-danger btn-primary btn-warning');
+            if (! $(a).hasClass('active')) {
+                $(a).removeClass('btn-danger btn-primary btn-warning');
+            }
+            $(a).removeClass('disabled')
         });
     }
 
     function showColors() {
         $('#grid .word').each(function(i, a) {
-            $(a).addClass(colorClasses[$(a).data('color')]);
+            showColor(a);
+            if ($(a).hasClass('active')) $(a).addClass('disabled');
         });
+    }
+
+    function showColor(word) {
+        $(word).addClass(colorClasses[$(word).data('color')]);
     }
 
     handleBoardID = function(e) {
@@ -66,13 +78,18 @@ $(document).ready(function() {
         populateGrid();
     }
 
+    $('.word').click(function() {
+        showColor(this);
+        $(this).addClass('active');
+    });
+
     $('#toggle').click(function() {
-        if (colorsHidden) {
-            showColors();
-        } else {
-            clearColors();
-        }
         colorsHidden = !colorsHidden;
+        if (colorsHidden) {
+            clearColors();
+        } else {
+            showColors();
+        }
     });
 
     setSeed(Math.round(1 + maxSeed * Math.random()));
