@@ -1,5 +1,11 @@
-<html>
+<!DOCTYLE html>
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
 <title>Codenames</title>
 
 <!-- JQuery -->
@@ -20,54 +26,54 @@
 <script src="codenames.js"></script>
 </head>
 
-<body class="text-center container-fluid jumbotron">
-    <h1>Codenames</h1>
+<body class="container">
+    <h1 class="text-center">Codenames</h1>
 
-    <button class="btn btn-info btn-block" id="toggle">Hide/Show</button>
+    <button class="btn btn-info btn-block btn-lg" id="toggle">
+        Hide/Show
+    </button>
 
     <div id="grid">
         <div class="btn-group btn-group-justified" role="group">
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
         </div>
         <div class="btn-group btn-group-justified" role="group">
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
         </div>
         <div class="btn-group btn-group-justified" role="group">
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
         </div>
         <div class="btn-group btn-group-justified" role="group">
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
         </div>
         <div class="btn-group btn-group-justified" role="group">
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
-            <a href="#" role="button" class="btn btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
+            <a href="#" role="button" class="btn btn-lg btn-default word"></a>
         </div>
     </div>
 
     <form action="#" onsubmit="handleBoardID()" class="form-inline">
-        <label class="control-label">
-            Board ID
-            <input id="seed" type="number" class="form-control"></input>
-        </label>
+        <label for="seed">Board ID</label>
+        <input id="seed" type="number" class="form-control"></input>
         <button type="submit" class="btn btn-default">Change</button>
     </form>
 </body>
