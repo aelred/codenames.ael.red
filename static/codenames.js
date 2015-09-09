@@ -61,17 +61,19 @@ $(document).ready(function() {
 
     function clearColors() {
         $('#grid .word').each(function(i, a) {
-            if (! $(a).hasClass('active')) {
-                $(a).removeClass('btn-danger btn-primary btn-warning');
-            }
-            $(a).removeClass('disabled')
+            clearColor(a);
         });
+    }
+
+    function clearColor(word) {
+        if (! $(word).hasClass('active')) {
+            $(word).removeClass('btn-danger btn-primary btn-warning');
+        }
     }
 
     function showColors() {
         $('#grid .word').each(function(i, a) {
             showColor(a);
-            if ($(a).hasClass('active')) $(a).addClass('disabled');
         });
     }
 
@@ -97,14 +99,19 @@ $(document).ready(function() {
     });
 
     $('.word').click(function() {
-        showColor(this);
         var assassin = false;
 
         if (! $(this).hasClass('active')) {
             $(this).addClass('active');
+            showColor(this);
             if ($(this).data('color') === 'red') redRevealed++;
             if ($(this).data('color') === 'blue') blueRevealed++;
             if ($(this).data('color') === 'assassin') assassin = true;
+        } else {
+            $(this).removeClass('active');
+            if (colorsHidden) clearColor(this);
+            if ($(this).data('color') === 'red') redRevealed--;
+            if ($(this).data('color') === 'blue') blueRevealed--;
         }
 
         // Check win condition
