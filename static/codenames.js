@@ -10,7 +10,7 @@ $(document).ready(function() {
         'blue': 'btn-primary',
         'neutral': 'btn-default',
         'assassin': 'btn-warning'
-    }
+    };
 
     var maxSeed = 1000000;
     var initialSeed;
@@ -31,7 +31,7 @@ $(document).ready(function() {
     var randomPop = function (array) {
         var index = Math.floor(random() * array.length);
         return array.splice(index, 1)[0];
-    }
+    };
 
     function populateGrid() {
         $.get('words.txt', function(data) {
@@ -141,4 +141,4 @@ $(document).ready(function() {
 
     setSeed(Math.round(1 + (maxSeed - 1) * Math.random()));
     populateGrid();
-})
+});
