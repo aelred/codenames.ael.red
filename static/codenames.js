@@ -61,6 +61,7 @@ $(document).ready(function() {
 
     function clearColors() {
         $('#grid .word').each(function(i, a) {
+            $(a).removeClass('all-revealed');
             clearColor(a);
         });
     }
@@ -68,16 +69,19 @@ $(document).ready(function() {
     function clearColor(word) {
         if (! $(word).hasClass('active')) {
             $(word).removeClass('btn-danger btn-primary btn-warning');
+            $(word).addClass('btn-default');
         }
     }
 
     function showColors() {
         $('#grid .word').each(function(i, a) {
+            $(a).addClass('all-revealed');
             showColor(a);
         });
     }
 
     function showColor(word) {
+        $(word).removeClass('btn-default');
         $(word).addClass(colorClasses[$(word).data('color')]);
     }
 
