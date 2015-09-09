@@ -12,12 +12,12 @@ $(document).ready(function() {
         'assassin': 'btn-warning'
     }
 
-    var maxSeed = 999999;
+    var maxSeed = 1000000;
     var initialSeed;
     var seed;
 
     function setSeed(newSeed) {
-        initialSeed = newSeed;
+        initialSeed = newSeed % maxSeed;
         seed = initialSeed;
         $('#seed').val(newSeed);
     }
@@ -135,6 +135,6 @@ $(document).ready(function() {
         }
     });
 
-    setSeed(Math.round(1 + maxSeed * Math.random()));
+    setSeed(Math.round(1 + (maxSeed - 1) * Math.random()));
     populateGrid();
 })
