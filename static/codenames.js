@@ -49,8 +49,9 @@ $(document).ready(function() {
             // Iterate over and populate table cells
             $('#grid .word').each(function(i, a) {
                 $(a).removeClass('active');
-                $(a).html(randomPop(words));
+                $(a).data('word', randomPop(words));
                 $(a).data('color', randomPop(colors));
+                $(a).html($(a).data('word'));
             });
 
             clearColors();
@@ -107,12 +108,14 @@ $(document).ready(function() {
 
         if (! $(this).hasClass('active')) {
             $(this).addClass('active');
+            $(this).empty();
             showColor(this);
             if ($(this).data('color') === 'red') redRevealed++;
             if ($(this).data('color') === 'blue') blueRevealed++;
             if ($(this).data('color') === 'assassin') assassin = true;
         } else {
             $(this).removeClass('active');
+            $(this).html($(this).data('word'));
             if (colorsHidden) clearColor(this);
             if ($(this).data('color') === 'red') redRevealed--;
             if ($(this).data('color') === 'blue') blueRevealed--;
